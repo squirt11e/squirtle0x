@@ -6,10 +6,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
-          <meta title='Squirtle0x' />
-          <meta name="description" content="Squirtle0x landing page" />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
