@@ -1,34 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Web3 Portfolio
 
-## Getting Started
+Welcome to my portfolio site, a unique fusion of a personal portfolio and an interactive Web3 application. This site showcases my PFP, articles from Mirror, and my social accounts. But it doesn't stop there - you can connect your own wallet and see your content in its place!
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- **NFT PFP Display**: The site features an NFT display that initially showcases my PFP. Connect your Ethereum wallet, and it will display your NFT PFP (if available in your wallet).
+- **Mirror Articles**: Explore my thoughts and insights on the crypto space in articles published on Mirror. If you have your own Mirror account connected with your ENS domain, your articles will be displayed instead.
+- **Social Accounts**: Check out my social accounts for more personal and professional updates. If your ENS domain has your social accounts, they will replace mine upon wallet connection.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Connect Your Wallet
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Want to see your content displayed on the site? Follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Click on the "Connect Wallet" button.
+2. Approve the connection in your wallet.
+3. If your ENS domain has associated NFTs, Mirror articles, and social accounts, you'll see them displayed on the site.
 
-## Learn More
+If you don't see your content, it might be because your ENS domain isn't set up correctly. To learn more about setting up your ENS domain, check out these Mirror articles:
 
-To learn more about Next.js, take a look at the following resources:
+- [Setting Up Your ENS Domain](#) (wip)
+- [Connecting Your Wallet to Your ENS Domain](#) (wip)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This portfolio site is built with React, Next.js, TypeScript, and uses the Ethereum blockchain for Web3 functionality.
