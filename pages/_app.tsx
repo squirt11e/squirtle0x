@@ -1,20 +1,22 @@
-import { WagmiConfig, createConfig, mainnet } from 'wagmi'
-import { createPublicClient, http } from 'viem'
-import '../app/styles/globals.css'
-import Profile from '../app/modules/Profile';
+import { AppProps } from 'next/app';
+import { WagmiConfig, createConfig, mainnet } from 'wagmi';
+import { createPublicClient, http } from 'viem';
+import '../app/styles/globals.css';
 
 const config = createConfig({
   autoConnect: true,
   publicClient: createPublicClient({
     chain: mainnet,
-    transport: http()
+    transport: http(),
   }),
-})
+});
 
-export default function Home() {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <WagmiConfig config={config}>
-      <Profile />
+      <Component {...pageProps} />
     </WagmiConfig>
-  )
-}
+  );
+};
+
+export default MyApp;
