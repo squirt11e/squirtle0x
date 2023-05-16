@@ -1,5 +1,4 @@
-import { useAccount } from 'wagmi';
-import { useEnsName } from 'wagmi';
+import { useAccount, useEnsName } from 'wagmi';
 import Link from 'next/link';
 
 export default function ENSName() {
@@ -10,6 +9,7 @@ export default function ENSName() {
   const { data, isError, isLoading } = useEnsName({
     address: address,
   });
+
   // Show ENS name if it exists, otherwise show address
   const ensName = data && !isError && !isLoading && data;
 

@@ -1,6 +1,5 @@
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { useAccount, useConnect, useDisconnect, useEnsName } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
-import { useEnsName } from 'wagmi';
 
 export default function ConnectWallet() {
   // Get account address and connection status
