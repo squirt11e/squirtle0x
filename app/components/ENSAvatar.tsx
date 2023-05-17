@@ -15,8 +15,6 @@ const ENSAvatar = () => {
     name: ensNameData,
   });
 
-  console.log(ensAvatarData);
-
   return (
     <div className="flex">
       {ensAvatarData ? (
