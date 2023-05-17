@@ -1,6 +1,5 @@
 import { useAccount, useEnsName } from 'wagmi';
 import Link from 'next/link';
-import exp from 'constants';
 
 const ENSName = () => {
   // Get account address and connection status
@@ -12,18 +11,22 @@ const ENSName = () => {
   });
 
   // Show ENS name if it exists, otherwise show address
-  const ensName = data && !isError && !isLoading && data;
+  const ensName = data;
 
   return (
     <>
-      <h2 className="text-2xl font-semibold text-green flex flex-wrap items-baseline">
+      <h2 className="text-3xl font-semibold text-light flex flex-wrap items-baseline">
         {data ? (
-          <>Welcome {ensName}</>
-        ) : isConnected ? (
-          <Link href="https://twitter.com/squirtle0x">Setup ENS Name</Link>
+          <>
+            Welcome &nbsp;<div className="text-lightBlue">{ensName}</div>
+          </>
+        ) : isConnected && !isLoading && !isError ? (
+          <Link href="https://twitter.com/squirtle0x" className="text-teal">
+            Setup ENS Name
+          </Link>
         ) : (
           <>
-            Squirtle0x &nbsp; <span className="text-sm font-light">Frontend Dev</span>
+            Squirtle0x &nbsp; <span className="text-base text-lightBlue">Frontend Dev</span>
           </>
         )}
       </h2>

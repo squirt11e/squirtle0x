@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import BlogPosts from '../components/BlogPosts';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import BlogPosts from '../../app/components/BlogPosts';
+import Footer from '../../app/components/Footer';
+import Header from '../../app/components/Header';
 
 const Profile = () => {
   return (
