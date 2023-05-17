@@ -1,6 +1,5 @@
 import { useAccount, useEnsName } from 'wagmi';
 import Link from 'next/link';
-import exp from 'constants';
 
 const ENSName = () => {
   // Get account address and connection status
@@ -16,9 +15,11 @@ const ENSName = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-semibold text-green flex flex-wrap items-baseline">
+      <h2 className="text-2xl font-semibold text-light flex flex-wrap items-baseline">
         {data ? (
-          <>Welcome {ensName}</>
+          <>
+            Welcome &nbsp;<div className="text-green">{ensName}</div>
+          </>
         ) : isConnected ? (
           <Link href="https://twitter.com/squirtle0x">Setup ENS Name</Link>
         ) : (

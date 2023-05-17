@@ -29,7 +29,12 @@ const wagmiConfig = createConfig({
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains} theme={darkTheme()}>
+      <RainbowKitProvider
+        chains={chains}
+        theme={darkTheme({
+          accentColor: '#5E5165',
+        })}
+      >
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiConfig>

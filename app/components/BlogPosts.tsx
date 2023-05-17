@@ -5,7 +5,7 @@ const BlogPosts = () => {
 
   return (
     <section className="mb-8 flex flex-col">
-      <h3 className="mb-4 text-2xl font-semibold text-green">Mirror</h3>
+      <h3 className="mb-4 text-2xl font-semibold text-light">Mirror</h3>
 
       <div className="flex flex-row flex-wrap gap-4">
         {tempPosts.map(post => (
