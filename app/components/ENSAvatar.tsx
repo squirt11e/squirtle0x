@@ -11,7 +11,11 @@ const ENSAvatar = () => {
     address: address,
   });
 
-  const { data: ensAvatarData } = useEnsAvatar({
+  const {
+    data: ensAvatarData,
+    isLoading,
+    isError,
+  } = useEnsAvatar({
     name: ensNameData,
   });
 
@@ -26,7 +30,7 @@ const ENSAvatar = () => {
           height={200}
           alt={`${ensNameData}'s avatar`}
         />
-      ) : isConnected ? (
+      ) : isConnected && !isLoading && !isError ? (
         <Link href="https://twitter.com/squirtle0x">
           <div className="w-[200px] h-[200px] border-solid border-2 border-light rounded-lg text-light flex justify-center items-center">
             Setup ENS Avatar

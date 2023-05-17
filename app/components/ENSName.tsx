@@ -10,10 +10,6 @@ const ENSName = () => {
     address: address,
   });
 
-  if (isLoading || isError) {
-    return <h2>Loading...</h2>;
-  }
-
   // Show ENS name if it exists, otherwise show address
   const ensName = data;
 
@@ -24,7 +20,7 @@ const ENSName = () => {
           <>
             Welcome &nbsp;<div className="text-lightBlue">{ensName}</div>
           </>
-        ) : isConnected ? (
+        ) : isConnected && !isLoading && !isError ? (
           <Link href="https://twitter.com/squirtle0x" className="text-teal">
             Setup ENS Name
           </Link>
