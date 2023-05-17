@@ -1,4 +1,4 @@
-import Profile from '../app/modules/Profile';
+import Profile from './profile/Profile';
 
 const HomePage = () => {
   return <Profile />;
