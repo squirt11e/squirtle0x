@@ -1,17 +1,18 @@
-import ConnectWallet from "./ConnectWallet";
-import Image from "next/image";
+import ConnectWallet from './ConnectWallet';
+import ENSName from './ENSName';
+import ENSAvatar from './ENSAvatar';
 
-
-export default function Header() {
-
+const Header = () => {
   return (
-  <header className="mb-16">
-    <div className="mb-6 flex flex-row justify-between">
-      <h2 className='text-2xl font-semibold text-green flex flex-wrap items-baseline'>Squirtle0x &nbsp; <span className="text-sm font-light">Frontend Dev</span></h2>
-      <ConnectWallet />
-    </div>
+    <header className="mb-16">
+      <div className="mb-6 flex flex-row justify-between">
+        <ENSName />
+        <ConnectWallet />
+      </div>
 
-    <Image src="/images/toad.png" className="border-solid border-2 border-purple rounded-lg" width={200} height={200} alt={"CrypToadz #1811"} priority />
-  </header>
+      <ENSAvatar />
+    </header>
   );
-}
+};
+
+export default Header;

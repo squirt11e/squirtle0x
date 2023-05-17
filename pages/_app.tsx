@@ -4,7 +4,7 @@ import { createPublicClient, http } from 'viem';
 import '../app/styles/globals.css';
 
 const config = createConfig({
-  autoConnect: true,
+  autoConnect: false,
   publicClient: createPublicClient({
     chain: mainnet,
     transport: http(),
