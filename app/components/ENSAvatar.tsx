@@ -18,13 +18,13 @@ const ENSAvatar = () => {
   return (
     <div className="flex">
       {ensAvatarData ? (
-        <Image
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
           src={ensAvatarData}
           className="border-solid border-2 border-purple rounded-lg"
           width={200}
           height={200}
-          alt={'CrypToadz #1811'}
-          priority
+          alt={`${ensNameData}'s avatar`}
         />
       ) : isConnected ? (
         <Link href="https://twitter.com/squirtle0x">
