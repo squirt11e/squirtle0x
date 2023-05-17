@@ -1,4 +1,6 @@
-export default function BlogPosts() {
+import exp from 'constants';
+
+const BlogPosts = () => {
   const tempPosts = ['Post 1', 'Post 2', 'Post 3', 'Post 4'];
 
   return (
@@ -15,4 +17,6 @@ export default function BlogPosts() {
       </div>
     </section>
   );
-}
+};
+
+export default BlogPosts;

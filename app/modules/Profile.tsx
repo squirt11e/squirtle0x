@@ -3,7 +3,7 @@ import BlogPosts from '../components/BlogPosts';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-export default function Profile() {
+const Profile = () => {
   return (
     <>
       <Head>
@@ -22,4 +22,6 @@ export default function Profile() {
       </div>
     </>
   );
-}
+};
+
+export default Profile;

@@ -1,7 +1,8 @@
 import { useAccount, useEnsName } from 'wagmi';
 import Link from 'next/link';
+import exp from 'constants';
 
-export default function ENSName() {
+const ENSName = () => {
   // Get account address and connection status
   const { address, isConnected } = useAccount();
 
@@ -28,4 +29,6 @@ export default function ENSName() {
       </h2>
     </>
   );
-}
+};
+
+export default ENSName;

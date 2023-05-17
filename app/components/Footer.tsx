@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { BsTwitter } from 'react-icons/bs';
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className="mt-auto">
       <h3 className="mb-2 text-lg font-semibold text-green">Socials</h3>
@@ -15,4 +15,6 @@ export default function Footer() {
       </ul>
     </footer>
   );
-}
+};
+
+export default Footer;

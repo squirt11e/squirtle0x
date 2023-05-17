@@ -2,7 +2,7 @@ import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ENSAvatar() {
+const ENSAvatar = () => {
   // Get account address and connection status
   const { address, isConnected } = useAccount();
 
@@ -48,4 +48,6 @@ export default function ENSAvatar() {
       )}
     </div>
   );
-}
+};
+
+export default ENSAvatar;

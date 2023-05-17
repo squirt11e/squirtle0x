@@ -1,7 +1,7 @@
 import { useAccount, useConnect, useDisconnect, useEnsName } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 
-export default function ConnectWallet() {
+const ConnectWallet = () => {
   // Get account address and connection status
   const { address, isConnected } = useAccount();
   const { connect } = useConnect({
@@ -26,4 +26,6 @@ export default function ConnectWallet() {
       {isConnected ? <div className="truncate">{ensName}</div> : 'Connect'}
     </button>
   );
-}
+};
+
+export default ConnectWallet;
