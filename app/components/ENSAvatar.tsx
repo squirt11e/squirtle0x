@@ -21,14 +21,14 @@ const ENSAvatar = () => {
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={ensAvatarData}
-          className="border-solid border-2 border-purple rounded-lg"
+          className="border-solid border-2 border-teal rounded-lg"
           width={200}
           height={200}
           alt={`${ensNameData}'s avatar`}
         />
       ) : isConnected ? (
         <Link href="https://twitter.com/squirtle0x">
-          <div className="w-[200px] h-[200px] border-solid border-2 border-light rounded-lg text-green flex justify-center items-center">
+          <div className="w-[200px] h-[200px] border-solid border-2 border-light rounded-lg text-light flex justify-center items-center">
             Setup ENS Avatar
           </div>
         </Link>
@@ -36,7 +36,7 @@ const ENSAvatar = () => {
         <>
           <Image
             src="/images/toad.png"
-            className="border-solid border-2 border-purple rounded-lg"
+            className="border-solid border-2 border-teal rounded-lg"
             width={200}
             height={200}
             alt={'CrypToadz #1811'}
