@@ -1,7 +1,6 @@
-import { NextPage } from 'next';
 import Profile from '../app/modules/Profile';
 
-const HomePage: NextPage = () => {
+const HomePage = () => {
   return <Profile />;
 };
 
