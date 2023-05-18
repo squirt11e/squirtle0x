@@ -1,6 +1,7 @@
 import { useAccount, useEnsName, useEnsAvatar } from 'wagmi';
 import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 const ENSAvatar = () => {
   // Get account address and connection status
@@ -52,4 +53,4 @@ const ENSAvatar = () => {
   );
 };
 
-export default ENSAvatar;
+export default dynamic(() => Promise.resolve(ENSAvatar), { ssr: false });

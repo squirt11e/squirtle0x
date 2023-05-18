@@ -1,5 +1,6 @@
 import { useAccount, useEnsName } from 'wagmi';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 const ENSName = () => {
   // Get account address and connection status
@@ -21,9 +22,12 @@ const ENSName = () => {
             Welcome &nbsp;<div className="text-lightBlue">{ensName}</div>
           </>
         ) : isConnected && !isLoading && !isError ? (
-          <Link href="https://twitter.com/squirtle0x" className="text-teal">
-            Setup ENS Name
-          </Link>
+          <>
+            Welcome 0x... &nbsp;
+            <Link href="https://twitter.com/squirtle0x" className="text-lightBlue text-base">
+              Setup ENS Name
+            </Link>
+          </>
         ) : (
           <>
             Squirtle0x &nbsp; <span className="text-base text-lightBlue">Frontend Dev</span>
@@ -34,4 +38,4 @@ const ENSName = () => {
   );
 };
 
-export default ENSName;
+export default dynamic(() => Promise.resolve(ENSName), { ssr: false });
