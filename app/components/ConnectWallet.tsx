@@ -5,7 +5,7 @@ const ConnectWallet = () => {
   return (
     <>
       <ConnectButton
-        chainStatus="none"
+        chainStatus="full"
         showBalance={false}
         accountStatus={{
           smallScreen: 'avatar',

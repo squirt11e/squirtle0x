@@ -6,14 +6,22 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --color-teal: #0E8388;
+  --color-black: #2C3333;
+  --color-gray: #2E4F4F;
+  --color-lightBlue: #CBE4DE;
+  --color-light: #F1F6F9;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 10, 15, 15;
+    --background-end-rgb: 15, 25, 25;
   }
+}
+
+html {
+  background-color: #000;
 }
 
 body {
