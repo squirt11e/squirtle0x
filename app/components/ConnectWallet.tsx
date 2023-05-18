@@ -1,4 +1,5 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import dynamic from 'next/dynamic';
 
 const ConnectWallet = () => {
   return (
@@ -15,4 +16,4 @@ const ConnectWallet = () => {
   );
 };
 
-export default ConnectWallet;
+export default dynamic(() => Promise.resolve(ConnectWallet), { ssr: false });
