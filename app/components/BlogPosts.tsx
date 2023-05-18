@@ -23,24 +23,30 @@ const AddressNFTs = ({ address }: AddressNFTsProps) => {
   const nfts = alchemy.nft
     .getNftsForOwner(address)
     .then(response => {
-      const nfts = response;
-
-      return nfts;
+      return response || [];
     })
     .catch(error => {
       console.error(error);
+      return [];
     });
 
   return nfts;
 };
 
+type NFT = {
+  description: string;
+  media: { gateway: string }[];
+  title: string;
+};
+
 const BlogPosts = () => {
   const tempPosts = ['Post 1', 'Post 2', 'Post 3', 'Post 4'];
-  const ensPosts = ['Post 1', 'Post 2', 'Post 3', 'Post 4'];
-  const { address } = useAccount();
-  const userAddress = address;
 
-  const [nfts, setNfts] = useState([]);
+  const { address, isConnected } = useAccount();
+
+  const userAddress = isConnected ? address : '0x4644A9Afe25B01405B9099c32FBf123F919d4838';
+
+  const [nfts, setNfts] = useState<NFT[]>([]);
 
   useEffect(() => {
     const getAddressNFTs = async (address: string) => {
@@ -49,7 +55,7 @@ const BlogPosts = () => {
 
     if (userAddress) {
       getAddressNFTs(userAddress)
-        .then(data => {
+        .then((data: any) => {
           const owned = data.ownedNfts;
           setNfts(owned);
         })
@@ -61,23 +67,28 @@ const BlogPosts = () => {
     }
   }, [userAddress]);
 
-  const filteredNfts = nfts.filter(nft => nft.description.includes('mirror.xyz'));
+  const ownerArticles = [
+    '0xa9d8f36c9bf4cf60f18f5afe694ef4fcdb4f4d91',
+    '0xfba8d5c640c43c9db86f7e64f8044bc50fdba1f2',
+    '0x5bdece46f3bae34a22ac7547f5d1454100c1a2a1',
+    '0x8b6d7e60453cd7ec0f3632cb645070537ce4c154',
+    '0xf59245e8f4e592bea0acdbb63f811856e3b0f156',
+  ];
+
+  const filteredNfts = isConnected
+    ? nfts
+      ? nfts.filter(nft => nft.description.includes('mirror.xyz'))
+      : []
+    : nfts.filter(nft => ownerArticles.some(article => nft.description.includes(article)));
 
   console.log(filteredNfts);
 
   return (
     <section className="mb-8 flex flex-col">
-      <h3 className="mb-4 text-xl font-semibold text-lightBlue">ENS Topics</h3>
-
-      <div className="flex flex-row flex-wrap gap-4">
-        {tempPosts.map(post => (
-          <div key={post} className="flex flex-col">
-            <div className="w-24 h-24 bg-teal rounded-lg"></div>
-          </div>
-        ))}
-      </div>
-
-      <h3 className="mt-8 mb-4 text-xl font-semibold text-lightBlue">Owned Mirror Articles</h3>
+      <h3 className=" mb-4 text-xl font-semibold text-lightBlue">
+        {isConnected && 'Owned '}
+        Mirror Articles
+      </h3>
 
       <div className="flex flex-row flex-wrap gap-4">
         {filteredNfts.length === 0 && (
@@ -85,17 +96,31 @@ const BlogPosts = () => {
             <p className="text-lightBlue">No Mirror Articles Found</p>
           </div>
         )}
-        {filteredNfts.map(nft => (
-          <div key={nft.title} className="flex flex-col">
+        {filteredNfts.map((nft, index) => (
+          <div key={index} className="flex flex-col">
             <a href={nft.description} target="_blank" rel="noreferrer">
-              <img
-                src={nft.media[0].gateway}
-                className="border-solid border-2 border-teal rounded-lg"
-                width={200}
-                height={200}
-                alt={`${nft.title} NFT`}
-              />
+              {nft.media.length > 0 ? (
+                <img
+                  src={nft.media[0].gateway}
+                  className="border-solid border-2 border-teal rounded-lg"
+                  width={200}
+                  height={200}
+                  alt={`${nft.title} NFT`}
+                />
+              ) : (
+                <div className="w-[200px] h-[200px] border-solid border-2 border-light rounded-lg text-light flex justify-center items-center"></div>
+              )}
             </a>
+          </div>
+        ))}
+      </div>
+
+      <h3 className="mt-8 mb-4 text-xl font-semibold text-lightBlue">ENS Topics</h3>
+
+      <div className="flex flex-row flex-wrap gap-4">
+        {tempPosts.map(post => (
+          <div key={post} className="flex flex-col">
+            <div className="w-24 h-24 bg-teal rounded-lg"></div>
           </div>
         ))}
       </div>
