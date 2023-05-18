@@ -53,18 +53,35 @@ const BlogPosts = () => {
       return AddressNFTs({ address });
     };
 
-    if (userAddress) {
-      getAddressNFTs(userAddress)
-        .then((data: any) => {
-          const owned = data.ownedNfts;
-          setNfts(owned);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    } else {
-      console.log('No user address provided');
-    }
+    const fetchNfts = async () => {
+      if (userAddress) {
+        let nftsData;
+
+        // Check if data exists in local storage
+        const storedNfts = localStorage.getItem(`nftsData-${userAddress}`);
+
+        if (storedNfts) {
+          // Use stored data
+          nftsData = JSON.parse(storedNfts);
+        } else {
+          // Fetch data and store it
+          const data = await getAddressNFTs(userAddress);
+          if (Array.isArray(data)) {
+            // Handle the case where data is never[]
+            console.error('No NFT data for this address');
+          } else {
+            nftsData = data.ownedNfts;
+            localStorage.setItem(`nftsData-${userAddress}`, JSON.stringify(nftsData));
+          }
+        }
+
+        setNfts(nftsData);
+      } else {
+        console.log('No user address provided');
+      }
+    };
+
+    fetchNfts();
   }, [userAddress]);
 
   const ownerArticles = [
@@ -80,8 +97,6 @@ const BlogPosts = () => {
       ? nfts.filter(nft => nft.description.includes('mirror.xyz'))
       : []
     : nfts.filter(nft => ownerArticles.some(article => nft.description.includes(article)));
-
-  console.log(filteredNfts);
 
   return (
     <section className="mb-8 flex flex-col">
