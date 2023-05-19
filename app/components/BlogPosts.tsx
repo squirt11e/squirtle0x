@@ -104,8 +104,6 @@ const BlogPosts = () => {
       : []
     : nfts.filter(nft => ownerArticles.some(article => nft.description.includes(article)));
 
-  console.log(filteredNfts);
-
   return (
     <section className="mb-8 flex flex-col">
       <h3 className=" mb-4 text-xl font-semibold text-lightBlue">
@@ -113,7 +111,7 @@ const BlogPosts = () => {
         Mirror Articles
       </h3>
 
-      <div className="grid grid-cols-articles gap-4 justify-center md:justify-start">
+      <div className="grid grid-cols-articles gap-2 md:gap-4 justify-center md:justify-start">
         {filteredNfts.length === 0 && (
           <div className="flex flex-col">
             <Link href="https://mirror.xyz/squirt11e.eth" className=" text-teal hover:text-lightBlue transition-colors">
