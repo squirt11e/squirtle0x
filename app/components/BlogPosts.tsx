@@ -72,7 +72,7 @@ const BlogPosts = () => {
           const data = await getAddressNFTs(userAddress);
           if (Array.isArray(data)) {
             // Handle the case where data is never[]
-            console.error('No NFT data for this address');
+            nftsData = [];
           } else {
             nftsData = data.nfts;
             localStorage.setItem(`nftsData-${userAddress}`, JSON.stringify(nftsData));
