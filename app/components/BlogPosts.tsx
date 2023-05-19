@@ -36,7 +36,7 @@ const AddressNFTs = ({ address }: AddressNFTsProps) => {
 
 type NFT = {
   description: string;
-  media: { thumbnail: string }[];
+  media: { thumbnail: string; gateway: string }[];
   title: string;
 };
 
@@ -103,6 +103,8 @@ const BlogPosts = () => {
       : []
     : nfts.filter(nft => ownerArticles.some(article => nft.description.includes(article)));
 
+  console.log(filteredNfts);
+
   return (
     <section className="mb-8 flex flex-col">
       <h3 className=" mb-4 text-xl font-semibold text-lightBlue">
@@ -121,7 +123,7 @@ const BlogPosts = () => {
             <a href={nft.description} target="_blank" rel="noreferrer">
               {nft.media.length > 0 ? (
                 <img
-                  src={nft.media[0].thumbnail || '/images/placeholder.jpg'}
+                  src={nft.media[0].thumbnail || nft.media[0].gateway || '/images/placeholder.jpg'}
                   className="border-solid border-[1px] border-teal hover:border-lightBlue transition-colors	 rounded-lg"
                   width={200}
                   height={200}
