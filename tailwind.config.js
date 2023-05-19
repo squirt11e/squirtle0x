@@ -19,6 +19,9 @@ module.exports = {
         lightBlue: '#CBE4DE',
         light: '#F1F6F9',
       },
+      fontFamily: {
+        body: ['Quicksand', 'sans-serif'],
+      }
     },
   },
   plugins: [],
