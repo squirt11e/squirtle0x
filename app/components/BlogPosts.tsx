@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import { Alchemy, Network } from 'alchemy-sdk';
 import { useAccount } from 'wagmi';
 import { type } from 'os';
+import Link from 'next/link';
 
 type AddressNFTsProps = {
   address: string | undefined;
@@ -112,27 +113,27 @@ const BlogPosts = () => {
         Mirror Articles
       </h3>
 
-      <div className="flex flex-row flex-wrap gap-4">
+      <div className="grid grid-cols-articles gap-4 justify-center md:justify-start">
         {filteredNfts.length === 0 && (
           <div className="flex flex-col">
-            <p className="text-lightBlue">No Mirror Articles Found</p>
+            <Link href="https://mirror.xyz/squirt11e.eth" className=" text-teal hover:text-lightBlue transition-colors">
+              Get your first Mirror article!
+            </Link>
           </div>
         )}
         {filteredNfts.map((nft, index) => (
           <div key={index} className="flex flex-col">
-            <a href={nft.description} target="_blank" rel="noreferrer">
+            <Link href={nft.description}>
               {nft.media.length > 0 ? (
                 <img
                   src={nft.media[0].thumbnail || nft.media[0].gateway || '/images/placeholder.jpg'}
-                  className="border-solid border-[1px] border-teal hover:border-lightBlue transition-colors	 rounded-lg"
-                  width={200}
-                  height={200}
+                  className="border-solid border-[1px] border-teal hover:border-lightBlue transition-colors	rounded-lg w-full"
                   alt={`${nft.title} NFT`}
                 />
               ) : (
                 <div className="w-[200px] h-[200px] border-solid border-2 border-light rounded-lg text-light flex justify-center items-center"></div>
               )}
-            </a>
+            </Link>
           </div>
         ))}
       </div>

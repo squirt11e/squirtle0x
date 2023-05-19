@@ -21,6 +21,9 @@ module.exports = {
       },
       fontFamily: {
         body: ['Quicksand', 'sans-serif'],
+      },
+      gridTemplateColumns: {
+        'articles': 'repeat(auto-fill, minmax(160px, 1fr))',
       }
     },
   },
