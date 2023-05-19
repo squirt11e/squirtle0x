@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Alchemy, Network } from 'alchemy-sdk';
 import { useAccount } from 'wagmi';
-import { type } from 'os';
 import Link from 'next/link';
 
 type AddressNFTsProps = {
@@ -24,7 +23,6 @@ const AddressNFTs = ({ address }: AddressNFTsProps) => {
   const nfts = alchemy.nft
     .getMintedNfts(address)
     .then(response => {
-      console.log(response);
       return response || [];
     })
     .catch(error => {
