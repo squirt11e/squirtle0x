@@ -26,7 +26,7 @@ const ENSAvatar = () => {
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={ensAvatarData}
-          className="border-solid border-2 border-teal rounded-lg"
+          className="border-solid border-[1px] border-teal rounded-lg"
           width={200}
           height={200}
           alt={`${ensNameData}'s avatar`}

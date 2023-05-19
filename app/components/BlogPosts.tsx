@@ -21,8 +21,9 @@ const AddressNFTs = ({ address }: AddressNFTsProps) => {
   const alchemy = new Alchemy(config);
 
   const nfts = alchemy.nft
-    .getNftsForOwner(address)
+    .getMintedNfts(address)
     .then(response => {
+      console.log(response);
       return response || [];
     })
     .catch(error => {
@@ -35,7 +36,7 @@ const AddressNFTs = ({ address }: AddressNFTsProps) => {
 
 type NFT = {
   description: string;
-  media: { gateway: string }[];
+  media: { thumbnail: string }[];
   title: string;
 };
 
@@ -44,10 +45,12 @@ const BlogPosts = () => {
 
   const { address, isConnected } = useAccount();
 
+  // Use default address if not connected
   const userAddress = isConnected ? address : '0x4644A9Afe25B01405B9099c32FBf123F919d4838';
 
   const [nfts, setNfts] = useState<NFT[]>([]);
 
+  // Fetch NFTs on load and when userAddress changes and store in local storage
   useEffect(() => {
     const getAddressNFTs = async (address: string) => {
       return AddressNFTs({ address });
@@ -70,7 +73,7 @@ const BlogPosts = () => {
             // Handle the case where data is never[]
             console.error('No NFT data for this address');
           } else {
-            nftsData = data.ownedNfts;
+            nftsData = data.nfts;
             localStorage.setItem(`nftsData-${userAddress}`, JSON.stringify(nftsData));
           }
         }
@@ -84,6 +87,7 @@ const BlogPosts = () => {
     fetchNfts();
   }, [userAddress]);
 
+  // Sqourtl0x articles
   const ownerArticles = [
     '0xa9d8f36c9bf4cf60f18f5afe694ef4fcdb4f4d91',
     '0xfba8d5c640c43c9db86f7e64f8044bc50fdba1f2',
@@ -92,6 +96,7 @@ const BlogPosts = () => {
     '0xf59245e8f4e592bea0acdbb63f811856e3b0f156',
   ];
 
+  // Filter NFTs to only show Mirror articles
   const filteredNfts = isConnected
     ? nfts
       ? nfts.filter(nft => nft.description.includes('mirror.xyz'))
@@ -116,8 +121,8 @@ const BlogPosts = () => {
             <a href={nft.description} target="_blank" rel="noreferrer">
               {nft.media.length > 0 ? (
                 <img
-                  src={nft.media[0].gateway}
-                  className="border-solid border-2 border-teal rounded-lg"
+                  src={nft.media[0].thumbnail || '/images/placeholder.jpg'}
+                  className="border-solid border-[1px] border-teal hover:border-lightBlue transition-colors	 rounded-lg"
                   width={200}
                   height={200}
                   alt={`${nft.title} NFT`}
