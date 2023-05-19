@@ -3,16 +3,17 @@ import dynamic from 'next/dynamic';
 
 const ConnectWallet = () => {
   return (
-    <>
+    <div>
       <ConnectButton
-        chainStatus="none"
+        chainStatus="full"
         showBalance={false}
         accountStatus={{
           smallScreen: 'avatar',
           largeScreen: 'full',
         }}
+        label="Connect"
       />
-    </>
+    </div>
   );
 };
 

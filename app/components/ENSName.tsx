@@ -19,7 +19,7 @@ const ENSName = () => {
       <h2 className="text-3xl font-semibold text-light flex flex-wrap items-baseline">
         {data ? (
           <>
-            Welcome &nbsp;<div className="text-lightBlue">{ensName}</div>
+            Welcome&nbsp;<div className="text-lightBlue">{ensName}</div>
           </>
         ) : isConnected && !isLoading && !isError ? (
           <>

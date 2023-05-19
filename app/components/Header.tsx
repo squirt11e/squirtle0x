@@ -5,7 +5,7 @@ import ENSAvatar from './ENSAvatar';
 const Header = () => {
   return (
     <header className="mb-16">
-      <div className="mb-6 flex flex-row justify-between">
+      <div className="mb-6 flex flex-row gap-2 justify-between">
         <ENSName />
         <ConnectWallet />
       </div>

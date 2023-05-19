@@ -19,6 +19,12 @@ module.exports = {
         lightBlue: '#CBE4DE',
         light: '#F1F6F9',
       },
+      fontFamily: {
+        body: ['Quicksand', 'sans-serif'],
+      },
+      gridTemplateColumns: {
+        'articles': 'repeat(auto-fill, minmax(160px, 1fr))',
+      }
     },
   },
   plugins: [],

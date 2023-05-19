@@ -12,10 +12,10 @@ const { chains, publicClient } = configureChains(
   [alchemyProvider({ apiKey: process.env.ALCHEMY_KEY || '' }), publicProvider()],
 );
 
-const projectId = 'squirtle0x';
+const projectId = 'squirtle0x portfolio';
 
 const { connectors } = getDefaultWallets({
-  appName: 'Squirtle0x',
+  appName: 'squirtle0x portfolio',
   projectId: projectId,
   chains,
 });
