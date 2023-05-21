@@ -14,7 +14,7 @@ const Profile = () => {
       <div className="flex min-h-screen flex-col p-4 md:py-8 md:px-12 max-w-screen-xl mr-auto ml-auto">
         <Header />
 
-        <main>
+        <main className="mb-12 md:mb-24">
           <BlogPosts />
         </main>
 

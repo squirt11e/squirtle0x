@@ -103,7 +103,7 @@ const BlogPosts = () => {
     : nfts.filter(nft => ownerArticles.some(article => nft.description.includes(article)));
 
   return (
-    <section className="mb-24 flex flex-col">
+    <section className="flex flex-col">
       <h3 className="mb-4 text-3xl font-semibold text-light">
         {isConnected && 'Owned '}
         Mirror Articles

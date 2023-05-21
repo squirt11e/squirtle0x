@@ -23,8 +23,8 @@ const Header = () => {
           <ENSAvatar />
         </div>
 
-        <p className="flex flex-col md:items-end justify-center w-full max-w-[500px] md:w-1/2 text-4xl md:text-6xl text-lightBlue font-thin md:text-right leading-snug">
-          <span className="block">{isConnected ? 'Your' : 'My'} on-chain identity & content</span>
+        <p className="flex flex-col md:items-end justify-center w-full md:max-w-[500px] md:w-1/2 text-4xl md:text-6xl text-lightBlue font-thin md:text-right leading-snug">
+          {isConnected ? 'Your' : 'My'} on-chain identity & content
           <span className={`text-base text-teal font-bold`}>
             {isConnected ? 'Experiencing' : 'Building'} the frontier
           </span>
