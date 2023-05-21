@@ -11,7 +11,7 @@ const Profile = () => {
         <meta name="description" content="Squirtle0x landing page" />
       </Head>
 
-      <div className="flex min-h-screen flex-col p-4 md:py-8 md:px-12">
+      <div className="flex min-h-screen flex-col p-4 md:py-8 md:px-12 max-w-screen-xl mr-auto ml-auto">
         <Header />
 
         <main>

@@ -103,43 +103,33 @@ const BlogPosts = () => {
     : nfts.filter(nft => ownerArticles.some(article => nft.description.includes(article)));
 
   return (
-    <section className="mb-8 flex flex-col">
-      <h3 className=" mb-4 text-xl font-semibold text-lightBlue">
+    <section className="mb-24 flex flex-col">
+      <h3 className="mb-4 text-3xl font-semibold text-light">
         {isConnected && 'Owned '}
         Mirror Articles
       </h3>
 
-      <div className="grid grid-cols-articles gap-2 md:gap-4 justify-center md:justify-start">
-        {filteredNfts.length === 0 && (
-          <div className="flex flex-col">
-            <Link href="https://mirror.xyz/squirt11e.eth" className=" text-teal hover:text-lightBlue transition-colors">
-              Get your first Mirror article!
-            </Link>
-          </div>
-        )}
+      {filteredNfts.length === 0 && (
+        <div>
+          <Link
+            href="https://mirror.xyz/squirt11e.eth"
+            className="text-lightBlue hover:text-teal font-semibold transition-colors underline underline-offset-8"
+          >
+            Get your first Mirror article!
+          </Link>
+        </div>
+      )}
+
+      <div className="grid grid-cols-articles md:grid-cols-mdArticles gap-2 md:gap-4 justify-center md:justify-start">
         {filteredNfts.map((nft, index) => (
           <div key={index} className="flex flex-col">
             <Link href={nft.description}>
-              {nft.media.length > 0 ? (
-                <img
-                  src={nft.media[0].thumbnail || nft.media[0].gateway || '/images/placeholder.jpg'}
-                  className="border-solid border-[1px] border-teal hover:border-lightBlue transition-colors	rounded-lg w-full"
-                  alt={`${nft.title} NFT`}
-                />
-              ) : (
-                <div className="w-[200px] h-[200px] border-solid border-2 border-light rounded-lg text-light flex justify-center items-center"></div>
-              )}
+              <img
+                src={nft.media[0].thumbnail || nft.media[0].gateway || '/images/placeholder.jpg'}
+                className="border-solid border-[1px] border-teal hover:border-lightBlue transition-colors	rounded-lg w-full"
+                alt={`${nft.title} NFT`}
+              />
             </Link>
-          </div>
-        ))}
-      </div>
-
-      <h3 className="mt-8 mb-4 text-xl font-semibold text-lightBlue">ENS Topics</h3>
-
-      <div className="flex flex-row flex-wrap gap-4">
-        {tempPosts.map(post => (
-          <div key={post} className="flex flex-col">
-            <div className="w-24 h-24 bg-teal rounded-lg"></div>
           </div>
         ))}
       </div>

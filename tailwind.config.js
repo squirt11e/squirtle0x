@@ -23,8 +23,10 @@ module.exports = {
         body: ['Quicksand', 'sans-serif'],
       },
       gridTemplateColumns: {
-        'articles': 'repeat(auto-fill, minmax(160px, 1fr))',
-      }
+        'articles': 'repeat(auto-fill, minmax(160px, 1fr))', // for mobile
+        'mdArticles': 'repeat(auto-fill, minmax(182px, 1fr))', // for larger screens
+      },
+
     },
   },
   plugins: [],
