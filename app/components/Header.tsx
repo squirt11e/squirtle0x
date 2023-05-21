@@ -9,7 +9,7 @@ const Header = () => {
   const { isConnected } = useAccount();
 
   return (
-    <header className="mb-24 md:mb-0 md:h-screen max-h-[1000px]">
+    <header className="mb-24 md:mb-0 md:h-screen max-h-[788px]">
       <div className="mb-12 md:mb-24 flex flex-row gap-2 justify-between">
         <div className="flex w-[52px] h-[40px]">
           <ToadSVG fill="var(--color-light)" />
