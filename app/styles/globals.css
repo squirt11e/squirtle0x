@@ -39,3 +39,24 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.strikethrough:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 4px;
+  background: var(--color-teal);
+  border-radius: 8px;
+  opacity: 0.8;
+}
+
+.animate-strikethrough:before {
+  width: 100%;
+  animation: strikethrough 0.8s linear forwards;
+}
+
+.animate-unstrikethrough:before {
+  width: 0;
+  animation: unstrikethrough 0.8s linear forwards;
+}
