@@ -25,7 +25,9 @@ const Header = () => {
 
         <p className="flex flex-col md:items-end justify-center w-full max-w-[500px] md:w-1/2 text-4xl md:text-6xl text-lightBlue font-thin md:text-right leading-snug">
           <span className="block">{isConnected ? 'Your' : 'My'} on-chain identity & content</span>
-          <span className={`text-base text-teal font-bold`}>{isConnected ? 'In' : 'Building'} the frontier</span>
+          <span className={`text-base text-teal font-bold`}>
+            {isConnected ? 'Experiencing' : 'Building'} the frontier
+          </span>
         </p>
       </div>
     </header>
