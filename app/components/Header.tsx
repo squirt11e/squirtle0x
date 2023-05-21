@@ -24,12 +24,8 @@ const Header = () => {
         </div>
 
         <p className="flex flex-col md:items-end justify-center w-full max-w-[500px] md:w-1/2 text-4xl md:text-6xl text-lightBlue font-thin md:text-right leading-snug">
-          <span className="block">
-            <ToggleStrikeText toggleCrossedOut={isConnected}>My Portfolio,</ToggleStrikeText> Your Digital Reflection
-          </span>
-          <span className={`text-base text-teal transition ${isConnected ? 'opacity-0' : 'opacity-100'}`}>
-            Connect and find out
-          </span>
+          <span className="block">{isConnected ? 'Your' : 'My'} on-chain identity & content</span>
+          <span className={`text-base text-teal font-bold`}>{isConnected ? 'In' : 'Building'} the frontier</span>
         </p>
       </div>
     </header>

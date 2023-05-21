@@ -30,7 +30,11 @@ const wagmiConfig = createConfig({
 const myTheme = merge(darkTheme(), {
   colors: {
     accentColor: 'var(--color-teal)',
-    connectButtonText: 'var(--color-light)',
+    accentColorForeground: 'var(--color-light)',
+    modalText: 'var(--color-light)',
+    modalTextSecondary: 'var(--color-lightBlue)',
+    modalBackground: 'var(--color-black)',
+    connectButtonBackground: 'var(--color-black)',
   },
   fonts: {
     body: 'inherit',
