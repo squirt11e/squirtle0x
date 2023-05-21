@@ -14,6 +14,12 @@ const ENSName = () => {
   // Show ENS name if it exists, otherwise show address
   const ensName = data;
 
+  const getStringWithEllipsis = (str: string) => {
+    const firstSixChars = str.substring(0, 4);
+    const lastFourChars = str.substring(str.length - 4);
+    return `${firstSixChars}...${lastFourChars}`;
+  };
+
   return (
     <>
       <h2 className="text-4xl font-semibold text-light flex flex-wrap items-baseline">
@@ -24,7 +30,7 @@ const ENSName = () => {
         ) : isConnected && !isLoading && !isError ? (
           <div className="flex flex-col gap-2">
             <div className="flex">
-              Welcome&nbsp;<div className="text-lightBlue">0x1337</div>
+              Welcome&nbsp;<div className="text-lightBlue">{getStringWithEllipsis(address || '0x1337')}</div>
             </div>
             <Link
               href="https://twitter.com/squirtle0x"

@@ -2,8 +2,8 @@ import ConnectWallet from './ConnectWallet';
 import ENSName from './ENSName';
 import ENSAvatar from './ENSAvatar';
 import ToadSVG from './ToadSVG';
-import ToggleStrikeText from '../utils/ToggleStrikeText';
 import { useAccount } from 'wagmi';
+import dynamic from 'next/dynamic';
 
 const Header = () => {
   const { isConnected } = useAccount();
@@ -34,4 +34,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default dynamic(() => Promise.resolve(Header), { ssr: false });
