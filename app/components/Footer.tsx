@@ -16,7 +16,7 @@ const Footer = () => {
           </Link>
         </li>
         <li className="flex flex-col">
-          <Link href="https://github.com/squirt11e">
+          <Link href="https://mirror.xyz/squirt11e.eth">
             <BsPenFill size="1.5em" className="text-teal hover:text-lightBlue transition-colors" />
           </Link>
         </li>
