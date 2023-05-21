@@ -24,7 +24,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'articles': 'repeat(auto-fill, minmax(160px, 1fr))', // for mobile
-        'mdArticles': 'repeat(auto-fill, minmax(182px, 1fr))', // for larger screens
+        'mdArticles': 'repeat(auto-fill, minmax(192px, 1fr))', // for larger screens
       },
 
     },

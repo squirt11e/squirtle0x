@@ -19,8 +19,9 @@ const Header = () => {
           <ENSAvatar />
         </div>
 
-        <p className="w-full max-w-[500px] md:w-2/3 text-4xl md:text-6xl text-lightBlue font-thin items-center flex md:text-right justify-end leading-snug">
+        <p className="flex flex-col md:items-end justify-center w-full max-w-[500px] md:w-2/3 text-4xl md:text-6xl text-lightBlue font-thin md:text-right leading-snug">
           My Portfolio, Your Digital Reflection
+          <span className="text-base text-teal">Connect and find out</span>
         </p>
       </div>
     </header>
