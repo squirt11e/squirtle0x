@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { AppProps } from 'next/app';
 import { getDefaultWallets, RainbowKitProvider, darkTheme, Theme } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
@@ -5,9 +7,12 @@ import { mainnet } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import merge from 'lodash.merge';
+import TagManager from 'react-gtm-module';
+
 import '../app/styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
 
+// Configure chains and connectors for Wagmi
 const { chains, publicClient } = configureChains(
   [mainnet],
   [alchemyProvider({ apiKey: process.env.ALCHEMY_KEY || '' }), publicProvider()],
@@ -42,6 +47,9 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
+  useEffect(() => {
+    TagManager.initialize({ gtmId: process.env.GTAG || '' });
+  }, []);
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains} theme={myTheme}>

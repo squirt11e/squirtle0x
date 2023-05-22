@@ -1,12 +1,22 @@
-import ConnectWallet from './ConnectWallet';
-import ENSName from './ENSName';
-import ENSAvatar from './ENSAvatar';
-import ToadSVG from './ToadSVG';
-import { useAccount } from 'wagmi';
 import dynamic from 'next/dynamic';
+import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
+import ConnectWallet from './ConnectWallet';
+import ToadSVG from './ToadSVG';
+import ENSNameHeading from './ENSNameHeading';
+import ENSAvatarHeading from './ENSAvatarHeading';
 
 const Header = () => {
-  const { isConnected } = useAccount();
+  // Get account address and connection status
+  const { address, isConnected } = useAccount();
+
+  // Get ENS name
+  const { data: ENSName } = useEnsName({
+    address: address,
+  });
+
+  const { data: ENSAvatar } = useEnsAvatar({
+    name: ENSName,
+  });
 
   return (
     <header className="mb-24 md:mb-0 md:h-screen max-h-[788px]">
@@ -19,14 +29,18 @@ const Header = () => {
 
       <div className="flex flex-col md:flex-row gap-4 justify-between">
         <div className="flex flex-col gap-6 justify-center w-full md:w-1/2">
-          <ENSName />
-          <ENSAvatar />
+          <ENSNameHeading ENSName={ENSName || undefined} isConnected={isConnected} address={address} />
+          <ENSAvatarHeading
+            ENSName={ENSName || undefined}
+            ENSAvatar={ENSAvatar || undefined}
+            isConnected={isConnected}
+          />
         </div>
 
         <p className="flex flex-col md:items-end justify-center w-full md:max-w-[500px] md:w-1/2 text-4xl md:text-6xl text-lightBlue font-thin md:text-right leading-snug">
           {isConnected ? 'Your' : 'My'} on-chain identity & content
           <span className={`text-base text-teal font-bold`}>
-            {isConnected ? 'Experiencing' : 'Building'} the frontier
+            {isConnected ? 'Experiencing' : 'Building'} the future
           </span>
         </p>
       </div>

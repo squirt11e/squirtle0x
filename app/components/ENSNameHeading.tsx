@@ -1,19 +1,13 @@
-import { useAccount, useEnsName } from 'wagmi';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-const ENSName = () => {
-  // Get account address and connection status
-  const { address, isConnected } = useAccount();
+type ENSNameProps = {
+  ENSName?: string;
+  isConnected?: boolean;
+  address?: string;
+};
 
-  // Get ENS name
-  const { data, isError, isLoading } = useEnsName({
-    address: address,
-  });
-
-  // Show ENS name if it exists, otherwise show address
-  const ensName = data;
-
+const ENSNameHeading = ({ ENSName, isConnected, address }: ENSNameProps) => {
   const getStringWithEllipsis = (str: string) => {
     const firstSixChars = str.substring(0, 4);
     const lastFourChars = str.substring(str.length - 4);
@@ -23,11 +17,11 @@ const ENSName = () => {
   return (
     <>
       <h2 className="text-4xl font-semibold text-light flex flex-wrap items-baseline">
-        {data ? (
+        {ENSName ? (
           <>
-            Welcome&nbsp;<div className="text-lightBlue">{ensName}</div>
+            Welcome&nbsp;<div className="text-lightBlue">{ENSName}</div>
           </>
-        ) : isConnected && !isLoading && !isError ? (
+        ) : isConnected ? (
           <div className="flex flex-col gap-2">
             <div className="flex">
               Welcome&nbsp;<div className="text-lightBlue">{getStringWithEllipsis(address || '0x1337')}</div>
@@ -49,4 +43,4 @@ const ENSName = () => {
   );
 };
 
-export default dynamic(() => Promise.resolve(ENSName), { ssr: false });
+export default dynamic(() => Promise.resolve(ENSNameHeading), { ssr: false });

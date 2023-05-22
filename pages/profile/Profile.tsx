@@ -8,7 +8,7 @@ const Profile = () => {
     <>
       <Head>
         <title>Squirtle0x</title>
-        <meta name="description" content="Squirtle0x Portfolio, Your Digital Reflection" />
+        <meta name="description" content="Squirtle0x on-chain identity & content" />
       </Head>
 
       <div className="flex min-h-screen flex-col p-4 md:py-8 md:px-12 max-w-screen-xl mr-auto ml-auto">
