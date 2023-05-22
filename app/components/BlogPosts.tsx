@@ -40,8 +40,6 @@ type NFT = {
 };
 
 const BlogPosts = () => {
-  const tempPosts = ['Post 1', 'Post 2', 'Post 3', 'Post 4'];
-
   const { address, isConnected } = useAccount();
 
   // Use default address if not connected
