@@ -23,8 +23,23 @@ module.exports = {
         body: ['Quicksand', 'sans-serif'],
       },
       gridTemplateColumns: {
-        'articles': 'repeat(auto-fill, minmax(160px, 1fr))',
-      }
+        'articles': 'repeat(auto-fill, minmax(160px, 1fr))', // for mobile
+        'mdArticles': 'repeat(auto-fill, minmax(192px, 1fr))', // for larger screens
+      },
+      keyframes: {
+        strikethrough: {
+          '0%': { 'width': '0' },
+          '100%': { 'width': '100%' },
+        },
+        unstrikethrough: {
+          '0%': { 'width': '100%' },
+          '100%': { 'width': '0' },
+        },
+      },
+      animation: {
+        strikethrough: 'strikethrough 0.8s linear',
+        unstrikethrough: 'unstrikethrough 0.8s linear',
+      },
     },
   },
   plugins: [],

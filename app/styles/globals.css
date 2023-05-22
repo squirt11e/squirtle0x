@@ -2,15 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-teal: #0E8388;
+    --color-black: #2C3333;
+    --color-gray: #2E4F4F;
+    --color-lightBlue: #CBE4DE;
+    --color-light: #F1F6F9;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --color-teal: #0E8388;
-  --color-black: #2C3333;
-  --color-gray: #2E4F4F;
-  --color-lightBlue: #CBE4DE;
-  --color-light: #F1F6F9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,4 +38,25 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.strikethrough:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 4px;
+  background: var(--color-teal);
+  border-radius: 8px;
+  opacity: 0.8;
+}
+
+.animate-strikethrough:before {
+  width: 100%;
+  animation: strikethrough 0.8s linear forwards;
+}
+
+.animate-unstrikethrough:before {
+  width: 0;
+  animation: unstrikethrough 0.8s linear forwards;
 }

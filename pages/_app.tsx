@@ -1,9 +1,10 @@
 import { AppProps } from 'next/app';
-import { getDefaultWallets, RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
+import { getDefaultWallets, RainbowKitProvider, darkTheme, Theme } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
+import merge from 'lodash.merge';
 import '../app/styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
 
@@ -26,15 +27,24 @@ const wagmiConfig = createConfig({
   publicClient,
 });
 
+const myTheme = merge(darkTheme(), {
+  colors: {
+    accentColor: 'var(--color-teal)',
+    accentColorForeground: 'var(--color-light)',
+    modalText: 'var(--color-light)',
+    modalTextSecondary: 'var(--color-lightBlue)',
+    modalBackground: 'var(--color-black)',
+    connectButtonBackground: 'var(--color-black)',
+  },
+  fonts: {
+    body: 'inherit',
+  },
+} as Theme);
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider
-        chains={chains}
-        theme={darkTheme({
-          accentColor: '#0E8388',
-        })}
-      >
+      <RainbowKitProvider chains={chains} theme={myTheme}>
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiConfig>
