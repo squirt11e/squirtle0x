@@ -22,7 +22,7 @@ const ENSAvatarHeading = ({ ENSName, ENSAvatar, isConnected }: ENSAvatarProps) =
         />
       ) : isConnected ? (
         <div className="w-[300px] h-[300px] ">
-          <Link href="https://twitter.com/squirtle0x">
+          <Link href="https://mirror.xyz/squirt11e.eth/V-fs2p6lOc_u9LlNK3ZHVOFUQAi05nLHuOBEZnYLgB4">
             <div className="w-full h-full border-solid border-2 border-light rounded-lg text-lightBlue font-semibold hover:text-teal font-semibold transition-colors underline underline-offset-8 flex justify-center items-center">
               Setup ENS Avatar
             </div>

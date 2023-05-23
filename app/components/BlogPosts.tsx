@@ -98,6 +98,7 @@ const BlogPosts = () => {
     '0x8b6d7e60453cd7ec0f3632cb645070537ce4c154',
     '0xf59245e8f4e592bea0acdbb63f811856e3b0f156',
     '0xdf01eb9e6c35fbc3b7546f6340ce693bd30ce6e3',
+    '0x9ae9caa387f2ff8c12a9a2000e99fbb0443a485c',
   ];
 
   // Filter NFTs to only show Mirror articles
