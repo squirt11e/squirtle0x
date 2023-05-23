@@ -9,10 +9,9 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 type AddressNFTsProps = {
   address: string | undefined;
-  isConnected: boolean;
 };
-const AddressNFTs = ({ address, isConnected }: AddressNFTsProps) => {
-  if (!address || !isConnected) {
+const AddressNFTs = ({ address }: AddressNFTsProps) => {
+  if (!address) {
     return Promise.resolve([]); // return an empty array if there's no address
   }
   const config = {
@@ -53,7 +52,7 @@ const BlogPosts = () => {
   // Fetch NFTs on load and when userAddress changes and store in local storage
   useEffect(() => {
     const getAddressNFTs = async (address: string) => {
-      return AddressNFTs({ address, isConnected });
+      return AddressNFTs({ address });
     };
 
     const fetchNfts = async () => {
@@ -63,7 +62,7 @@ const BlogPosts = () => {
         // Check if data exists in local storage
         const storedNfts = sessionStorage.getItem(`nftsData-${userAddress}`);
 
-        if (storedNfts) {
+        if (storedNfts && storedNfts !== 'undefined') {
           // Use stored data
           nftsData = JSON.parse(storedNfts);
         } else {
