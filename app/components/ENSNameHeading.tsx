@@ -27,7 +27,7 @@ const ENSNameHeading = ({ ENSName, isConnected, address }: ENSNameProps) => {
               Welcome&nbsp;<div className="text-lightBlue">{getStringWithEllipsis(address || '0x1337')}</div>
             </div>
             <Link
-              href="https://twitter.com/squirtle0x"
+              href="https://mirror.xyz/squirt11e.eth/FFeDDw2UazVJbGsy4TZ1ac5EKr9WZLT5wIDcI8u0PfY"
               className="text-lightBlue text-base hover:text-teal font-semibold transition-colors underline underline-offset-8"
             >
               Setup ENS Name
