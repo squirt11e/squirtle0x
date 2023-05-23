@@ -1,3 +1,6 @@
+import { Suspense } from 'react';
+import Image from 'next/image';
+
 import dynamic from 'next/dynamic';
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
 import ConnectWallet from './ConnectWallet';
@@ -30,11 +33,26 @@ const Header = () => {
       <div className="flex flex-col md:flex-row gap-4 justify-between">
         <div className="flex flex-col gap-6 justify-center w-full md:w-1/2">
           <ENSNameHeading ENSName={ENSName || undefined} isConnected={isConnected} address={address} />
-          <ENSAvatarHeading
-            ENSName={ENSName || undefined}
-            ENSAvatar={ENSAvatar || undefined}
-            isConnected={isConnected}
-          />
+          <Suspense
+            fallback={
+              <div className="flex flex-col relative">
+                <Image
+                  src="/images/placeholder.jpg"
+                  className="border-solid border-2 border-teal rounded-lg"
+                  width={300}
+                  height={300}
+                  alt={'CrypToadz #1811'}
+                  priority
+                />
+              </div>
+            }
+          >
+            <ENSAvatarHeading
+              ENSName={ENSName || undefined}
+              ENSAvatar={ENSAvatar || undefined}
+              isConnected={isConnected}
+            />
+          </Suspense>
         </div>
 
         <p className="flex flex-col md:items-end justify-center w-full md:max-w-[500px] md:w-1/2 text-4xl md:text-6xl text-lightBlue font-thin md:text-right leading-snug">

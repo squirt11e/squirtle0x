@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import dynamic from 'next/dynamic';
 import { Alchemy, Network } from 'alchemy-sdk';
 import { useAccount } from 'wagmi';
 import Link from 'next/link';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 type AddressNFTsProps = {
   address: string | undefined;
@@ -47,6 +48,7 @@ const BlogPosts = () => {
   const userAddress = isConnected ? address : '0x4644A9Afe25B01405B9099c32FBf123F919d4838';
 
   const [nfts, setNfts] = useState<NFT[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Fetch NFTs on load and when userAddress changes and store in local storage
   useEffect(() => {
@@ -59,31 +61,35 @@ const BlogPosts = () => {
         let nftsData;
 
         // Check if data exists in local storage
-        const storedNfts = localStorage.getItem(`nftsData-${userAddress}`);
+        const storedNfts = sessionStorage.getItem(`nftsData-${userAddress}`);
 
         if (storedNfts) {
           // Use stored data
           nftsData = JSON.parse(storedNfts);
         } else {
+          setIsLoading(true);
           // Fetch data and store it
           const data = await getAddressNFTs(userAddress);
           if (Array.isArray(data)) {
             // Handle the case where data is never[]
             nftsData = [];
+            setIsLoading(false);
           } else {
             nftsData = data.nfts;
-            localStorage.setItem(`nftsData-${userAddress}`, JSON.stringify(nftsData));
+            sessionStorage.setItem(`nftsData-${userAddress}`, JSON.stringify(nftsData));
+            setIsLoading(false);
           }
         }
 
         setNfts(nftsData);
+        setIsLoading(false);
       } else {
         console.log('No user address provided');
       }
     };
 
     fetchNfts();
-  }, [userAddress]);
+  }, [userAddress, isConnected]);
 
   // Sqourtl0x articles
   const ownerArticles = [
@@ -109,7 +115,13 @@ const BlogPosts = () => {
         Mirror Articles
       </h3>
 
-      {filteredNfts.length === 0 && (
+      {isLoading ? (
+        <div className="flex mt-2">
+          <div className="w-8 h-8 animate-spin">
+            <AiOutlineLoading3Quarters className="w-full h-full fill-teal" />
+          </div>
+        </div>
+      ) : filteredNfts.length === 0 ? (
         <div>
           <Link
             href="https://mirror.xyz/squirt11e.eth"
@@ -118,21 +130,21 @@ const BlogPosts = () => {
             Get your first Mirror article!
           </Link>
         </div>
+      ) : (
+        <div className="grid grid-cols-articles md:grid-cols-mdArticles gap-2 md:gap-4 justify-center md:justify-start">
+          {filteredNfts.map((nft, index) => (
+            <div key={index} className="flex flex-col">
+              <Link href={nft.description}>
+                <img
+                  src={nft.media[0].thumbnail || nft.media[0].gateway || '/images/placeholder.jpg'}
+                  className="border-solid border-[1px] border-teal hover:border-lightBlue transition-colors	rounded-lg w-full"
+                  alt={`${nft.title} NFT`}
+                />
+              </Link>
+            </div>
+          ))}
+        </div>
       )}
-
-      <div className="grid grid-cols-articles md:grid-cols-mdArticles gap-2 md:gap-4 justify-center md:justify-start">
-        {filteredNfts.map((nft, index) => (
-          <div key={index} className="flex flex-col">
-            <Link href={nft.description}>
-              <img
-                src={nft.media[0].thumbnail || nft.media[0].gateway || '/images/placeholder.jpg'}
-                className="border-solid border-[1px] border-teal hover:border-lightBlue transition-colors	rounded-lg w-full"
-                alt={`${nft.title} NFT`}
-              />
-            </Link>
-          </div>
-        ))}
-      </div>
     </section>
   );
 };
