@@ -12,8 +12,9 @@ import TagManager from 'react-gtm-module';
 import '../app/styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
 
-export const getStaticProps = () => {
-  const { GTAG, ALCHEMY_KEY } = process.env;
+export const getServerSideProps = () => {
+  const GTAG = process.env.GTAG;
+  const ALCHEMY_KEY = process.env.ALCHEMY_KEY;
   return {
     props: {
       GTAG,
@@ -23,7 +24,7 @@ export const getStaticProps = () => {
 };
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const secrets = getStaticProps();
+  const secrets = getServerSideProps();
 
   // Configure chains and connectors for Wagmi
   const { chains, publicClient } = configureChains(
