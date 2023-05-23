@@ -11,7 +11,6 @@ type ENSAvatarProps = {
 const ENSAvatarHeading = ({ ENSName, ENSAvatar, isConnected }: ENSAvatarProps) => {
   return (
     <div className="flex flex-col relative">
-      {/* <h3 className="text-xl font-thin text-lightBlue absolute -bottom-8">ENS Avatar</h3> */}
       {ENSAvatar ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -30,16 +29,14 @@ const ENSAvatarHeading = ({ ENSName, ENSAvatar, isConnected }: ENSAvatarProps) =
           </Link>
         </div>
       ) : (
-        <>
-          <Image
-            src="/images/toad.png"
-            className="border-solid border-2 border-teal rounded-lg"
-            width={300}
-            height={300}
-            alt={'CrypToadz #1811'}
-            priority
-          />
-        </>
+        <Image
+          src="/images/toad.png"
+          className="border-solid border-2 border-teal rounded-lg"
+          width={300}
+          height={300}
+          alt={'CrypToadz #1811'}
+          priority
+        />
       )}
     </div>
   );
