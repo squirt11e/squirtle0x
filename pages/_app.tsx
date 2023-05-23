@@ -8,7 +8,6 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import merge from 'lodash.merge';
 import TagManager from 'react-gtm-module';
-import { env } from '../env.mjs';
 
 import '../app/styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
@@ -16,7 +15,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 // Configure chains and connectors for Wagmi
 const { chains, publicClient } = configureChains(
   [mainnet],
-  [alchemyProvider({ apiKey: env.NEXT_PUBLIC_ALCHEMY_KEY || '' }), publicProvider()],
+  [alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_KEY || '' }), publicProvider()],
 );
 
 const projectId = 'squirtle0x portfolio';
@@ -48,7 +47,7 @@ const myTheme = merge(darkTheme(), {
 } as Theme);
 const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
-    TagManager.initialize({ gtmId: env.NEXT_PUBLIC_GTAG || '' });
+    TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTAG || '' });
   }, []);
   return (
     <WagmiConfig config={wagmiConfig}>
