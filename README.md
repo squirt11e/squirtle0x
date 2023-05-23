@@ -18,8 +18,8 @@ Want to see your content displayed on the site? Follow these steps:
 
 If you don't see your content, it might be because your ENS domain isn't set up correctly. To learn more about setting up your ENS domain, check out these Mirror articles:
 
-- [Setting Up Your ENS Domain](#) (wip)
-- [Connecting Your Wallet to Your ENS Domain](#) (wip)
+- [How to Set Up Your ENS Avatar](#) (wip)
+- [How to Set Up Your ENS Avatar](https://mirror.xyz/squirt11e.eth/FFeDDw2UazVJbGsy4TZ1ac5EKr9WZLT5wIDcI8u0PfY)
 
 ## Technologies Used
 
