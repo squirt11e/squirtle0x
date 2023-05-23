@@ -8,13 +8,14 @@ import Link from 'next/link';
 
 type AddressNFTsProps = {
   address: string | undefined;
+  isConnected: boolean;
 };
-const AddressNFTs = ({ address }: AddressNFTsProps) => {
-  if (!address) {
+const AddressNFTs = ({ address, isConnected }: AddressNFTsProps) => {
+  if (!address || !isConnected) {
     return Promise.resolve([]); // return an empty array if there's no address
   }
   const config = {
-    apiKey: process.env.ALCHEMY_KEY_OP,
+    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_OP_KEY,
     network: Network.OPT_MAINNET,
   };
 
@@ -50,7 +51,7 @@ const BlogPosts = () => {
   // Fetch NFTs on load and when userAddress changes and store in local storage
   useEffect(() => {
     const getAddressNFTs = async (address: string) => {
-      return AddressNFTs({ address });
+      return AddressNFTs({ address, isConnected });
     };
 
     const fetchNfts = async () => {

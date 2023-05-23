@@ -15,7 +15,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 // Configure chains and connectors for Wagmi
 const { chains, publicClient } = configureChains(
   [mainnet],
-  [alchemyProvider({ apiKey: process.env.ALCHEMY_KEY || '' }), publicProvider()],
+  [alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_KEY || '' }), publicProvider()],
 );
 
 const projectId = 'squirtle0x portfolio';
@@ -45,10 +45,9 @@ const myTheme = merge(darkTheme(), {
     body: 'inherit',
   },
 } as Theme);
-
 const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
-    TagManager.initialize({ gtmId: process.env.GTAG || '' });
+    TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTAG || '' });
   }, []);
   return (
     <WagmiConfig config={wagmiConfig}>
