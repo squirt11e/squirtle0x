@@ -15,7 +15,7 @@ const AddressNFTs = ({ address }: AddressNFTsProps) => {
     return Promise.resolve([]); // return an empty array if there's no address
   }
   const config = {
-    apiKey: env.ALCHEMY_KEY_OP,
+    apiKey: env.NEXT_PUBLIC_ALCHEMY_OP_KEY,
     network: Network.OPT_MAINNET,
   };
 
