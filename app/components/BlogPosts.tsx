@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import { Alchemy, Network } from 'alchemy-sdk';
 import { useAccount } from 'wagmi';
 import Link from 'next/link';
+import { env } from '../../env.mjs';
 
 type AddressNFTsProps = {
   address: string | undefined;
@@ -14,7 +15,7 @@ const AddressNFTs = ({ address }: AddressNFTsProps) => {
     return Promise.resolve([]); // return an empty array if there's no address
   }
   const config = {
-    apiKey: process.env.ALCHEMY_KEY_OP,
+    apiKey: env.ALCHEMY_KEY_OP,
     network: Network.OPT_MAINNET,
   };
 
