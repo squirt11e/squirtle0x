@@ -3,10 +3,10 @@ import Image from 'next/image';
 
 import dynamic from 'next/dynamic';
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
-import ConnectWallet from './ConnectWallet';
-import ToadSVG from './ToadSVG';
-import ENSNameHeading from './ENSNameHeading';
-import ENSAvatarHeading from './ENSAvatarHeading';
+import ToadSVG from '../components/ToadSVG';
+import ConnectWallet from '../components/ConnectWallet';
+import ENSNameHeading from '../components/ENSNameHeading';
+import ENSAvatarHeading from '../components/ENSAvatarHeading';
 
 const Header = () => {
   // Get account address and connection status
