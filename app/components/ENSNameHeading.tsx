@@ -23,7 +23,7 @@ const ENSNameHeading = ({ ENSName, isConnected, address }: ENSNameProps) => {
           </>
         ) : isConnected ? (
           <div className="flex flex-col gap-2">
-            <div className="flex">
+            <div className="flex flex-wrap">
               Welcome&nbsp;<div className="text-lightBlue">{getStringWithEllipsis(address || '0x1337')}</div>
             </div>
             <Link
