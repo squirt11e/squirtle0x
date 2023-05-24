@@ -1,94 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from 'react';
-
 import dynamic from 'next/dynamic';
-import { Alchemy, Network } from 'alchemy-sdk';
-import { useAccount } from 'wagmi';
 import Link from 'next/link';
+import { useAccount } from 'wagmi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-
-type AddressNFTsProps = {
-  address: string | undefined;
-};
-const AddressNFTs = ({ address }: AddressNFTsProps) => {
-  if (!address) {
-    return Promise.resolve([]); // return an empty array if there's no address
-  }
-  const config = {
-    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_OP_KEY,
-    network: Network.OPT_MAINNET,
-  };
-
-  const alchemy = new Alchemy(config);
-
-  const nfts = alchemy.nft
-    .getMintedNfts(address)
-    .then(response => {
-      return response || [];
-    })
-    .catch(error => {
-      console.error(error);
-      return [];
-    });
-
-  return nfts;
-};
-
-type NFT = {
-  description: string;
-  media: { thumbnail: string; gateway: string }[];
-  title: string;
-};
+import { useFetchMintedNfts } from '../hooks/useGetMintedNfts';
 
 const BlogPosts = () => {
+  // Get account address and connection status
   const { address, isConnected } = useAccount();
 
   // Use default address if not connected
   const userAddress = isConnected ? address : '0x4644A9Afe25B01405B9099c32FBf123F919d4838';
 
-  const [nfts, setNfts] = useState<NFT[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Fetch NFTs on load and when userAddress changes and store in local storage
-  useEffect(() => {
-    const getAddressNFTs = async (address: string) => {
-      return AddressNFTs({ address });
-    };
-
-    const fetchNfts = async () => {
-      if (userAddress) {
-        let nftsData;
-
-        // Check if data exists in local storage
-        const storedNfts = sessionStorage.getItem(`nftsData-${userAddress}`);
-
-        if (storedNfts && storedNfts !== 'undefined') {
-          // Use stored data
-          nftsData = JSON.parse(storedNfts);
-        } else {
-          setIsLoading(true);
-          // Fetch data and store it
-          const data = await getAddressNFTs(userAddress);
-          if (Array.isArray(data)) {
-            // Handle the case where data is never[]
-            nftsData = [];
-            setIsLoading(false);
-          } else {
-            nftsData = data.nfts;
-            sessionStorage.setItem(`nftsData-${userAddress}`, JSON.stringify(nftsData));
-            setIsLoading(false);
-          }
-        }
-
-        setNfts(nftsData);
-        setIsLoading(false);
-      } else {
-        console.log('No user address provided');
-      }
-    };
-
-    fetchNfts();
-  }, [userAddress, isConnected]);
+  // Fetch minted NFTs
+  const { nfts, isLoading } = useFetchMintedNfts({ userAddress, isConnected });
 
   // Sqourtl0x articles
   const ownerArticles = [

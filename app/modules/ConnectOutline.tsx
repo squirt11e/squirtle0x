@@ -10,7 +10,7 @@ const ConnectOutline = () => {
 
   return (
     <section className="flex flex-col">
-      <h3 className="mb-4 w-full text-4xl md:text-6xl text-center text-light font-thin leading-snug">
+      <h3 className="mb-4 w-full text-4xl md:text-4xl text-center text-light font-thin leading-snug">
         {isConnected ? (
           <>Connected!</>
         ) : (
