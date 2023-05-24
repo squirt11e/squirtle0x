@@ -10,7 +10,7 @@ const ConnectOutline = () => {
 
   return (
     <section className="flex flex-col">
-      <h3 className="mb-4 w-full text-4xl md:text-4xl text-center text-light font-thin leading-snug">
+      <h3 className="mb-4 w-full text-3xl md:text-4xl text-center text-light font-thin leading-snug">
         {isConnected ? (
           <>Connected!</>
         ) : (
@@ -26,7 +26,7 @@ const ConnectOutline = () => {
       {isConnected ? (
         <ENSBlogPosts />
       ) : (
-        <p className="text-base md:text-lg text-light text-center">
+        <p className="text-base md:text-lg text-lightBlue text-center">
           Setup your identity by connecting your public facing wallet address.
         </p>
       )}
