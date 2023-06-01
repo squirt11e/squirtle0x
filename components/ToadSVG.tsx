@@ -1,7 +1,7 @@
 type ToadNFTProps = {
-  fill: string;
-  className?: string;
-};
+  fill: string
+  className?: string
+}
 
 const ToadSVG = ({ fill, className }: ToadNFTProps) => {
   return (
@@ -21,7 +21,7 @@ const ToadSVG = ({ fill, className }: ToadNFTProps) => {
       <path d="m160.18458 579.99892v20h20 20v20 20h20 20v20 20h20 20v-20-20h-20-20v-20-20h-20-20v-20-20h-20-20z" />
       <path d="m800.18459 619.99892v20h-20-20v20 20h20 20v20 20h60 60v-20-20h-60-60v-20-20h20 20v-20-20h-20-20z" />
     </svg>
-  );
-};
+  )
+}
 
-export default ToadSVG;
+export default ToadSVG

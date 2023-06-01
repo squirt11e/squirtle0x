@@ -1,12 +1,11 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
+import Link from 'next/link'
+import Image from 'next/image'
 
 type ENSAvatarProps = {
-  ENSName?: string;
-  ENSAvatar?: string;
-  isConnected?: boolean;
-};
+  ENSName?: string
+  ENSAvatar?: string
+  isConnected?: boolean
+}
 
 const ENSAvatarHeading = ({ ENSName, ENSAvatar, isConnected }: ENSAvatarProps) => {
   return (
@@ -39,7 +38,7 @@ const ENSAvatarHeading = ({ ENSName, ENSAvatar, isConnected }: ENSAvatarProps) =
         />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default dynamic(() => Promise.resolve(ENSAvatarHeading), { ssr: false });
+export default ENSAvatarHeading

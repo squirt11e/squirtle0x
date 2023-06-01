@@ -1,25 +1,25 @@
-import { Suspense } from 'react';
-import Image from 'next/image';
+'use client'
+import Image from 'next/image'
+import { Suspense } from 'react'
 
-import dynamic from 'next/dynamic';
-import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
-import ToadSVG from '../components/ToadSVG';
-import ConnectWallet from '../components/ConnectWallet';
-import ENSNameHeading from '../components/ENSNameHeading';
-import ENSAvatarHeading from '../components/ENSAvatarHeading';
+import ToadSVG from '@/components/ToadSVG'
+import ConnectWallet from '@/components/ConnectWallet'
+import ENSNameHeading from '@/components/ENSNameHeading'
+import { useAccount, useEnsAvatar, useEnsName } from 'wagmi'
+import ENSAvatarHeading from '@/components/ENSAvatarHeading'
 
 const Header = () => {
   // Get account address and connection status
-  const { address, isConnected } = useAccount();
+  const { address, isConnected } = useAccount()
 
   // Get ENS name
   const { data: ENSName } = useEnsName({
     address: address,
-  });
+  })
 
   const { data: ENSAvatar } = useEnsAvatar({
     name: ENSName,
-  });
+  })
 
   return (
     <header className="mb-24 md:mb-0 md:h-screen max-h-[788px]">
@@ -63,7 +63,7 @@ const Header = () => {
         </p>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default dynamic(() => Promise.resolve(Header), { ssr: false });
+export default Header
