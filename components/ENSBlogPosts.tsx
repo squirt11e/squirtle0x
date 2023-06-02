@@ -5,6 +5,7 @@ import { BsFillCheckSquareFill } from 'react-icons/bs'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi'
 import { useFetchMintedNfts } from '../hooks/useGetMintedNfts'
+import { MIRROR_AVATAR_ADDRESS, MIRROR_NAME_ADDRESS, OWNER_ADDRESS } from '@/config/constants'
 
 const ENSBlogPosts = () => {
   // Get account address and connection status
@@ -21,13 +22,13 @@ const ENSBlogPosts = () => {
   })
 
   // Use default address if not connected
-  const userAddress = '0x4644A9Afe25B01405B9099c32FBf123F919d4838'
+  const userAddress = OWNER_ADDRESS
 
   // Fetch minted NFTs
   const { nfts, isLoading } = useFetchMintedNfts({ userAddress, isConnected })
 
   // Sqourtl0x articles
-  const ownerArticles = ['0xdf01eb9e6c35fbc3b7546f6340ce693bd30ce6e3', '0x9ae9caa387f2ff8c12a9a2000e99fbb0443a485c']
+  const ownerArticles = [MIRROR_AVATAR_ADDRESS, MIRROR_NAME_ADDRESS]
 
   // Filter NFTs to only show Mirror articles
   const filteredNfts = nfts.filter(nft => ownerArticles.some((article: string) => nft.description.includes(article)))

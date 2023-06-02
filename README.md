@@ -20,8 +20,8 @@ Want to see your content displayed on the site? Follow these steps:
 
 If you don't see your content, it might be because your ENS domain isn't set up correctly. To learn more about setting up your ENS domain, check out these Mirror articles:
 
-- [How to Buy an ENS Name](https://mirror.xyz/squirt11e.eth/V-fs2p6lOc_u9LlNK3ZHVOFUQAi05nLHuOBEZnYLgB4)
-- [How to Set Up Your ENS Avatar](https://mirror.xyz/squirt11e.eth/FFeDDw2UazVJbGsy4TZ1ac5EKr9WZLT5wIDcI8u0PfY)
+- [How to Buy an ENS Name](https://mirror.xyz/squirt11e.eth/0x9ae9caa387f2ff8c12a9a2000e99fbb0443a485c)
+- [How to Set Up Your ENS Avatar](https://mirror.xyz/squirt11e.eth/0xdf01eb9e6c35fbc3b7546f6340ce693bd30ce6e3)
 
 ## Technologies Used
 
