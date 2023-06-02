@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
+import { MIRROR_AVATAR_URL, OWNER_MIRROR_URL } from '@/config/constants'
 
 type ENSAvatarProps = {
   ENSName?: string
@@ -22,7 +23,7 @@ const ENSAvatarHeading = ({ ENSName, ENSAvatar, isConnected }: ENSAvatarProps) =
         />
       ) : isConnected ? (
         <div className="w-[300px] h-[300px] ">
-          <Link href="https://mirror.xyz/squirt11e.eth/FFeDDw2UazVJbGsy4TZ1ac5EKr9WZLT5wIDcI8u0PfY">
+          <Link href={MIRROR_AVATAR_URL}>
             <div className="w-full h-full border-solid border-2 border-light rounded-lg text-lightBlue font-semibold hover:text-teal font-semibold transition-colors underline underline-offset-8 flex justify-center items-center">
               Setup ENS Avatar
             </div>
