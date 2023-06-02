@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { OWNER_MIRROR_URL } from '@/config/constants'
 import { BsGithub, BsPenFill, BsTwitter } from 'react-icons/bs'
 
 const Footer = () => {
@@ -16,7 +17,7 @@ const Footer = () => {
           </Link>
         </li>
         <li className="flex flex-col">
-          <Link href="https://mirror.xyz/squirt11e.eth">
+          <Link href={OWNER_MIRROR_URL}>
             <BsPenFill size="1.5em" className="text-teal hover:text-lightBlue transition-colors" />
           </Link>
         </li>

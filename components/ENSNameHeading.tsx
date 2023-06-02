@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import { OWNER_MIRROR_URL } from '@/config/constants'
 
 type ENSNameProps = {
   ENSName?: string
@@ -27,7 +28,7 @@ const ENSNameHeading = ({ ENSName, isConnected, address }: ENSNameProps) => {
               Welcome&nbsp;<div className="text-lightBlue">{getStringWithEllipsis(address || '0x1337')}</div>
             </div>
             <Link
-              href="https://mirror.xyz/squirt11e.eth/V-fs2p6lOc_u9LlNK3ZHVOFUQAi05nLHuOBEZnYLgB4"
+              href={`${OWNER_MIRROR_URL}/V-fs2p6lOc_u9LlNK3ZHVOFUQAi05nLHuOBEZnYLgB4`}
               className="text-lightBlue text-base hover:text-teal font-semibold transition-colors underline underline-offset-8"
             >
               Setup ENS Name
