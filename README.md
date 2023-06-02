@@ -1,4 +1,6 @@
-# My Web3 Portfolio
+# My Web3 On-chain Identity
+
+[https://squirtle0x.dev/](https://squirtle0x.dev/)
 
 Welcome to my corner of the internet, a distinctive blend of an on-chain identity and an interactive Web3 application. This site displays my PFP, articles from Mirror, and my social accounts. It doesn't end there however, you're able to connect your own wallet and view your content as it fits in!
 
