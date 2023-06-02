@@ -1,36 +1,36 @@
+'use cleint'
 /* eslint-disable @next/next/no-img-element */
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import { BsFillCheckSquareFill } from 'react-icons/bs';
-import { useFetchMintedNfts } from '../hooks/useGetMintedNfts';
+import Link from 'next/link'
+import { BsFillCheckSquareFill } from 'react-icons/bs'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { useAccount, useEnsAvatar, useEnsName } from 'wagmi'
+import { useFetchMintedNfts } from '../hooks/useGetMintedNfts'
 
 const ENSBlogPosts = () => {
   // Get account address and connection status
-  const { address, isConnected } = useAccount();
+  const { address, isConnected } = useAccount()
 
   // Get ENS name
   const { data: ENSName } = useEnsName({
     address: address,
-  });
+  })
 
   // Get ENS avatar
   const { data: ENSAvatar } = useEnsAvatar({
     name: ENSName,
-  });
+  })
 
   // Use default address if not connected
-  const userAddress = '0x4644A9Afe25B01405B9099c32FBf123F919d4838';
+  const userAddress = '0x4644A9Afe25B01405B9099c32FBf123F919d4838'
 
   // Fetch minted NFTs
-  const { nfts, isLoading } = useFetchMintedNfts({ userAddress, isConnected });
+  const { nfts, isLoading } = useFetchMintedNfts({ userAddress, isConnected })
 
   // Sqourtl0x articles
-  const ownerArticles = ['0xdf01eb9e6c35fbc3b7546f6340ce693bd30ce6e3', '0x9ae9caa387f2ff8c12a9a2000e99fbb0443a485c'];
+  const ownerArticles = ['0xdf01eb9e6c35fbc3b7546f6340ce693bd30ce6e3', '0x9ae9caa387f2ff8c12a9a2000e99fbb0443a485c']
 
   // Filter NFTs to only show Mirror articles
-  const filteredNfts = nfts.filter(nft => ownerArticles.some((article: string) => nft.description.includes(article)));
+  const filteredNfts = nfts.filter(nft => ownerArticles.some((article: string) => nft.description.includes(article)))
 
   return (
     <>
@@ -43,17 +43,17 @@ const ENSBlogPosts = () => {
       ) : (
         <div className="flex flex-row gap-2 md:gap-4 justify-center">
           {filteredNfts.map((nft, index) => {
-            const isFirstItemComplete = index === 0 && ENSAvatar;
-            const isSecondItemComplete = index === 1 && ENSName;
+            const isFirstItemComplete = index === 0 && ENSAvatar
+            const isSecondItemComplete = index === 1 && ENSName
 
-            let classNames = '';
+            let classNames = ''
 
             if (isFirstItemComplete) {
-              classNames = ' opacity-40';
+              classNames = ' opacity-40'
             }
 
             if (isSecondItemComplete) {
-              classNames = ' opacity-40';
+              classNames = ' opacity-40'
             }
 
             return (
@@ -71,12 +71,12 @@ const ENSBlogPosts = () => {
                   )}
                 </Link>
               </div>
-            );
+            )
           })}
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default dynamic(() => Promise.resolve(ENSBlogPosts), { ssr: false });
+export default ENSBlogPosts

@@ -1,18 +1,18 @@
-import Link from 'next/link';
-import dynamic from 'next/dynamic';
+'use client'
+import Link from 'next/link'
 
 type ENSNameProps = {
-  ENSName?: string;
-  isConnected?: boolean;
-  address?: string;
-};
+  ENSName?: string
+  isConnected?: boolean
+  address?: string
+}
 
 const ENSNameHeading = ({ ENSName, isConnected, address }: ENSNameProps) => {
   const getStringWithEllipsis = (str: string) => {
-    const firstSixChars = str.substring(0, 4);
-    const lastFourChars = str.substring(str.length - 4);
-    return `${firstSixChars}...${lastFourChars}`;
-  };
+    const firstSixChars = str.substring(0, 4)
+    const lastFourChars = str.substring(str.length - 4)
+    return `${firstSixChars}...${lastFourChars}`
+  }
 
   return (
     <>
@@ -40,7 +40,7 @@ const ENSNameHeading = ({ ENSName, isConnected, address }: ENSNameProps) => {
         )}
       </h2>
     </>
-  );
-};
+  )
+}
 
-export default dynamic(() => Promise.resolve(ENSNameHeading), { ssr: false });
+export default ENSNameHeading

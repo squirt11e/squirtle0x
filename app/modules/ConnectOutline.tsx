@@ -1,12 +1,12 @@
-import dynamic from 'next/dynamic';
-import { useAccount } from 'wagmi';
-import { useConnectModal } from '@rainbow-me/rainbowkit';
-import ENSBlogPosts from '../components/ENSBlogPosts';
+'use client'
+import { useAccount } from 'wagmi'
+import ENSBlogPosts from '@/components/ENSBlogPosts'
+import { useConnectModal } from '@rainbow-me/rainbowkit'
 
 const ConnectOutline = () => {
-  const { isConnected } = useAccount();
+  const { isConnected } = useAccount()
 
-  const { openConnectModal } = useConnectModal();
+  const { openConnectModal } = useConnectModal()
 
   return (
     <section className="flex flex-col">
@@ -31,7 +31,7 @@ const ConnectOutline = () => {
         </p>
       )}
     </section>
-  );
-};
+  )
+}
 
-export default dynamic(() => Promise.resolve(ConnectOutline), { ssr: false });
+export default ConnectOutline

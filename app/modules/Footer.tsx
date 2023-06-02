@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { BsGithub, BsPenFill, BsTwitter } from 'react-icons/bs';
+import Link from 'next/link'
+import { BsGithub, BsPenFill, BsTwitter } from 'react-icons/bs'
 
 const Footer = () => {
   return (
@@ -22,7 +22,7 @@ const Footer = () => {
         </li>
       </ul>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

@@ -1,19 +1,19 @@
+'use client'
 /* eslint-disable @next/next/no-img-element */
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-import { useAccount } from 'wagmi';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import { useFetchMintedNfts } from '../hooks/useGetMintedNfts';
+import Link from 'next/link'
+import { useAccount } from 'wagmi'
+import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { useFetchMintedNfts } from '@/hooks/useGetMintedNfts'
 
 const BlogPosts = () => {
   // Get account address and connection status
-  const { address, isConnected } = useAccount();
+  const { address, isConnected } = useAccount()
 
   // Use default address if not connected
-  const userAddress = isConnected ? address : '0x4644A9Afe25B01405B9099c32FBf123F919d4838';
+  const userAddress = isConnected ? address : '0x4644A9Afe25B01405B9099c32FBf123F919d4838'
 
   // Fetch minted NFTs
-  const { nfts, isLoading } = useFetchMintedNfts({ userAddress, isConnected });
+  const { nfts, isLoading } = useFetchMintedNfts({ userAddress, isConnected })
 
   // Sqourtl0x articles
   const ownerArticles = [
@@ -24,14 +24,14 @@ const BlogPosts = () => {
     '0xf59245e8f4e592bea0acdbb63f811856e3b0f156',
     '0xdf01eb9e6c35fbc3b7546f6340ce693bd30ce6e3',
     '0x9ae9caa387f2ff8c12a9a2000e99fbb0443a485c',
-  ];
+  ]
 
   // Filter NFTs to only show Mirror articles
   const filteredNfts = isConnected
     ? nfts
       ? nfts.filter(nft => nft.description.includes('mirror.xyz'))
       : []
-    : nfts.filter(nft => ownerArticles.some(article => nft.description.includes(article)));
+    : nfts.filter(nft => ownerArticles.some(article => nft.description.includes(article)))
 
   return (
     <section className="flex flex-col">
@@ -71,7 +71,7 @@ const BlogPosts = () => {
         </div>
       )}
     </section>
-  );
-};
+  )
+}
 
-export default dynamic(() => Promise.resolve(BlogPosts), { ssr: false });
+export default BlogPosts
