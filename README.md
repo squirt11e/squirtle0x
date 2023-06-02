@@ -1,6 +1,6 @@
 # My Web3 Portfolio
 
-Welcome to my portfolio site, a unique fusion of a personal portfolio and an interactive Web3 application. This site showcases my PFP, articles from Mirror, and my social accounts. But it doesn't stop there - you can connect your own wallet and see your content in its place!
+Welcome to my corner of the internet, a distinctive blend of an on-chain identity and an interactive Web3 application. This site displays my PFP, articles from Mirror, and my social accounts. It doesn't end there however, you're able to connect your own wallet and view your content as it fits in!
 
 ## Features
 
@@ -12,15 +12,15 @@ Welcome to my portfolio site, a unique fusion of a personal portfolio and an int
 
 Want to see your content displayed on the site? Follow these steps:
 
-1. Click on the "Connect Wallet" button.
+1. Click on the "Connect" button.
 2. Approve the connection in your wallet.
-3. If your ENS domain has associated Name, PFP, and Mirror articles, you'll see them displayed on the site.
+3. If your wallet has an associated ENS Name, ENS PFP, and Mirror articles, you'll see them displayed on the site.
 
 If you don't see your content, it might be because your ENS domain isn't set up correctly. To learn more about setting up your ENS domain, check out these Mirror articles:
 
-- [How to Set Up Your ENS Avatar](#) (wip)
+- [How to Buy an ENS Name](https://mirror.xyz/squirt11e.eth/V-fs2p6lOc_u9LlNK3ZHVOFUQAi05nLHuOBEZnYLgB4)
 - [How to Set Up Your ENS Avatar](https://mirror.xyz/squirt11e.eth/FFeDDw2UazVJbGsy4TZ1ac5EKr9WZLT5wIDcI8u0PfY)
 
 ## Technologies Used
 
-This portfolio site is built with React, Next.js, TypeScript, and uses the Ethereum blockchain for Web3 functionality.
+This portfolio site is built with Next.js, Tailwind CSS, and uses Ethereum for Web3 functionality.
